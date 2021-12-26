@@ -1,2 +1,8 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+<% count = 0 %>
+<% @login_user_blogs.each do |blog| %> <% count += blog.favorites.count if
+blog.favorites.present? %>
+<% end %>
+<p>お気に入りされた合計数: <%= count %></p>
+<%= link_to 'お気に入り一覧', favorites_path %></div>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -16,6 +17,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @blogs = @user.favorites
+    @login_user_blogs = current_user.blogs
   end
 
   private
